@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: {{ style.page_width }} {{ style.page_height }};
+    margin: {{ style.margin_top }}mm {{ style.margin_right }}mm {{ style.margin_bottom }}mm {{ style.margin_left }}mm;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: {{ style.base_font_size }}pt;
+    line-height: {{ style.line_height }};
+    color: #222;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: {{ style.section_gap }}pt;
+    {% if photo %}
+    justify-content: space-between;
+    {% else %}
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    {% endif %}
+  }
+
+  .header-text {
+    flex: 1;
+    {% if photo %}
+    text-align: left;
+    {% endif %}
+  }
+
+  .name {
+    font-size: {{ style.name_font_size }}pt;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: 0.5pt;
+    margin-bottom: 3pt;
+  }
+
+  .contact {
+    font-size: {{ style.contact_font_size }}pt;
+    color: #555;
+  }
+
+  .contact span:not(:last-child)::after {
+    content: " | ";
+    color: #aaa;
+  }
+
+  .photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 15px;
+    flex-shrink: 0;
+  }
+
+  .section {
+    margin-bottom: {{ style.section_gap }}pt;
+  }
+
+  .section-heading {
+    font-size: {{ style.heading_font_size }}pt;
+    font-weight: 700;
+    color: #1a1a2e;
+    border-bottom: 1.5pt solid #1a1a2e;
+    padding-bottom: 2pt;
+    margin-bottom: {{ style.entry_gap }}pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8pt;
+  }
+
+  .entry {
+    margin-bottom: {{ style.entry_gap }}pt;
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .entry-title {
+    font-weight: 700;
+    color: #333;
+  }
+
+  .entry-org {
+    color: #555;
+    font-style: italic;
+  }
+
+  .entry-date {
+    color: #777;
+    font-size: {{ style.base_font_size * 0.9 }}pt;
+    white-space: nowrap;
+  }
+
+  .entry-details {
+    margin-top: {{ style.detail_gap }}pt;
+    padding-left: 16pt;
+  }
+
+  .entry-details li {
+    margin-bottom: {{ style.detail_gap }}pt;
+  }
+
+  .raw-content {
+    margin-top: {{ style.detail_gap }}pt;
+  }
+
+  .raw-content p {
+    margin-bottom: {{ style.detail_gap }}pt;
+  }
+
+  .raw-content ul, .raw-content ol {
+    padding-left: 16pt;
+    margin-bottom: {{ style.detail_gap }}pt;
+  }
+
+  .raw-content li {
+    margin-bottom: {{ style.detail_gap * 0.5 }}pt;
+  }
+
+  a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-text">
+      <div class="name">{{ cv.name }}</div>
+      {% if cv.contact.items %}
+      <div class="contact">
+        {% for item in cv.contact.items %}
+        <span>{{ item }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% if photo %}
+    <img class="photo" src="data:{{ photo_mime }};base64,{{ photo }}" alt="Photo">
+    {% endif %}
+  </div>
+
+  {% for section in cv.sections %}
+  <div class="section">
+    <div class="section-heading">{{ section.heading }}</div>
+    {% if section.entries %}
+      {% for entry in section.entries %}
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">{{ entry.title }}</span>
+            {% if entry.organization %}
+            <span class="entry-org"> — {{ entry.organization }}</span>
+            {% endif %}
+          </div>
+          {% if entry.date_range %}
+          <div class="entry-date">{{ entry.date_range }}</div>
+          {% endif %}
+        </div>
+        {% if entry.details %}
+        <ul class="entry-details">
+          {% for detail in entry.details %}
+          <li>{{ detail }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    {% elif section.raw_html %}
+      <div class="raw-content">{{ section.raw_html }}</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</body>
+</html>
