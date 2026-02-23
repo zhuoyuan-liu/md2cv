@@ -23,3 +23,9 @@ htmlcov/
 # IDE
 .idea/
 .vscode/
+
+# Personal CV data
+cv/
+
+# Generated job applications
+applications/
