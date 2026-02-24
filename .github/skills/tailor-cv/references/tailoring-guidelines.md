@@ -20,9 +20,9 @@ For each experience entry:
 1. **Score each bullet** against the JD requirements (internally — do not show scores in output).
 2. **Keep 3-5 bullets** per highly relevant role, **1-2 bullets** per supporting role.
 3. **Reword bullets** to use JD terminology where truthful. Example: if the JD says "CI/CD pipelines" and the full CV says "deployment automation", use "CI/CD pipelines".
-4. **Lead with impact**: start bullets with quantified results where possible ("Reduced latency by 40%", "Processed 5TB/day", "Led a team of 8").
-5. **Match the job level**:
-   - For senior/lead roles: emphasize leadership, architecture, mentorship, cross-team impact.
+4. **Lead with impact**: start bullets with quantified results where possible ("Reduced latency by 40%", "Processed 5TB/day"). Only claim leadership (e.g., "Led a team of 8") if the full CV explicitly states it — otherwise prefer "Worked in a team of 8" or "Contributed to a team of 8".
+5. **Match the job level**, but stay honest about the candidate's actual role:
+   - For senior/lead roles: emphasize leadership, architecture, mentorship, cross-team impact — but only if the full CV supports these claims.
    - For IC roles: emphasize technical depth, specific technologies, measurable output.
 
 ## Length Targets
@@ -51,6 +51,7 @@ Important:
 - **Avoid AI-favored filler phrases** such as "Spearheaded", "Leveraged", "Utilized", "Orchestrated", "Synergized", "Cutting-edge", "Best-in-class", "Drove innovation". Prefer plain, direct language.
 - **Use natural, human-sounding language.** Write the way a real person would describe their work. For example: "Built" instead of "Architected", "Improved" instead of "Optimized", "Worked with" instead of "Collaborated cross-functionally with".
 - **Keep bullet points factual and specific.** State what was done and the measurable result. Avoid vague claims like "significantly improved performance".
+- **Do not exaggerate the level of responsibility or ownership.** Use verbs that honestly reflect the candidate's actual role. Prefer "Engaged in", "Contributed to", "Participated in", "Supported" over inflated claims like "Led", "Drove", "Owned", "Pioneered" — unless the full CV explicitly states a leadership or ownership role. It is fine to subtly enhance language (e.g., "Helped build" → "Contributed to building"), but do not promote a contributor to a leader. The CV should impress through substance and results, not inflated titles or verbs.
 
 ## Keyword Optimization
 
